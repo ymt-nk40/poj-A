@@ -1,0 +1,2005 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denqid Studio v2 — Design &amp; Brand Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&amp;family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════
+   DESIGN TOKENS (from Denqid Studio v2)
+══════════════════════════════════════ */
+    :root {
+      /* Colors */
+      --bg: rgb(22, 22, 22);
+      --bg-alt: rgb(30, 30, 30);
+      --bg-dark: #111111;
+      --bg-dark-alt: #1a1a1a;
+      
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.5);
+      --surface-glass-strong: rgba(255, 255, 255, 0.75);
+      
+      --accent: #ff3700;
+      --link: rgb(0, 153, 255);
+      
+      /* Inverted text defaults for dark bg */
+      --text: #ffffff;
+      --text-sec: rgba(255, 255, 255, 0.5);
+      --text-ter: rgba(255, 255, 255, 0.25);
+      --text-inv: #000000;
+      --text-inv-sec: rgba(0, 0, 0, 0.5);
+      
+      --border-light: rgba(255, 255, 255, 0.25);
+      --border-dark: rgba(0, 0, 0, 0.1);
+
+      /* Shadows */
+      --shadow-heavy:
+        0.565px 0.565px 0.8px -0.7px rgba(0, 0, 0, .5),
+        1.445px 1.445px 2px -1.4px rgba(0, 0, 0, .48),
+        2.897px 2.897px 4px -2.1px rgba(0, 0, 0, .46),
+        5.5px 5.5px 7.8px -2.8px rgba(0, 0, 0, .41),
+        10.9px 10.9px 15.4px -3.5px rgba(0, 0, 0, .32),
+        24px 24px 34px -4.25px rgba(0, 0, 0, .09);
+      --shadow-card:
+        0 0 0 1px rgba(255, 255, 255, .1),
+        12px 16px 16px rgba(0, 0, 0, .1);
+        
+      /* Button Primary Shadow */
+      --shadow-btn:
+        0.56px 0.56px 1.76px -0.4px rgba(0, 0, 0, 0.18),
+        1.44px 1.44px 4.5px -0.8px rgba(0, 0, 0, 0.18),
+        2.9px 2.9px 9px -1.25px rgba(0, 0, 0, 0.18),
+        5.5px 5.5px 17px -1.6px rgba(0, 0, 0, 0.18),
+        10.9px 10.9px 34px -2px rgba(0, 0, 0, 0.18),
+        24px 24px 74px -2.5px rgba(0, 0, 0, 0.18),
+        inset 0px -16px 48px 0px rgba(0, 0, 0, 1);
+
+      /* Easing */
+      --ease: cubic-bezier(0.44, 0, 0.56, 1);
+      --ease-back: cubic-bezier(0.33, 1.53, 0.69, 0.99);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      /* Spacing */
+      --sp-xs: 4px;
+      --sp-sm: 8px;
+      --sp-md: 12px;
+      --sp-lg: 16px;
+      --sp-xl: 24px;
+      --sp-2xl: 32px;
+      --sp-3xl: 40px;
+      --sp-4xl: 60px;
+      --sp-5xl: 80px;
+      --sp-6xl: 120px;
+
+      /* Radius */
+      --r-md: 8px;
+      --r-lg: 16px;
+      --r-xl: 24px;
+      --r-2xl: 33px;
+      --r-pill: 154px;
+      --r-circle: 50%;
+    }
+
+    /* ══════ RESET ══════ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      overscroll-behavior: none;
+      scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter Tight', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    /* ══════ NOISE ══════ */
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://framerusercontent.com/images/6mcf62RlDfRfU61Yg5vb2pefpi4.png');
+      background-size: 180px;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9990;
+    }
+
+    /* ══════ CURTAIN ══════ */
+    .curtain {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: top;
+    }
+
+    .curtain-logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 52px;
+      color: #fff;
+      opacity: 0;
+      letter-spacing: -0.03em;
+    }
+
+    /* ══════ CUSTOM CURSOR ══════ */
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--text);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transition: width .3s var(--ease), height .3s var(--ease),
+        background .3s var(--ease), transform .15s var(--ease);
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9997;
+      transition: all .12s linear;
+    }
+
+    body.cursor-hover .cursor-dot {
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: .12;
+    }
+
+    body.cursor-hover .cursor-ring {
+      opacity: 0;
+    }
+
+    /* ══════ PROGRESS ══════ */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 5000;
+    }
+
+    /* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: var(--r-lg);
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: none;
+      color: #fff;
+    }
+
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      background: #2ECC71;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--sp-2xl);
+      list-style: none;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(20px);
+      border-radius: var(--r-pill);
+      padding: 10px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow-card);
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sec);
+      cursor: none;
+      transition: color .25s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: #000000;
+      color: #ffffff;
+      border-radius: var(--r-pill);
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: none;
+      box-shadow: var(--shadow-btn);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform .3s var(--ease-spring);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    /* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+    .hero-pin {
+      height: 400vh;
+      position: relative;
+    }
+
+    .hero-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+    }
+
+    /* Status pill */
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: var(--r-pill);
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--sp-4xl);
+      opacity: 0;
+    }
+
+    /* Headline */
+    .hero-headline {
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .h-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 8px;
+      /* overflow:visible — cards animate outside row bounds */
+    }
+
+    /* Isolates text-reveal clip from card overflow */
+    .h-word-wrap {
+      overflow: hidden;
+      display: inline-block;
+      line-height: 1.15em;
+    }
+
+    .h-word {
+      font-family: 'Inter', sans-serif;
+      font-size: 80px;
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 1.15em;
+      font-feature-settings: 'ss01' on, 'dlig' on;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(120px);
+    }
+
+    .h-word.dim {
+      color: var(--text-ter);
+    }
+
+    /* Floating project cards */
+    .h-card {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-heavy);
+      border: 1.5px solid rgba(255, 255, 255, .1);
+      flex-shrink: 0;
+      opacity: 0;
+      transform: translateY(60px) rotate(-13deg);
+      background: var(--bg-dark);
+    }
+
+    .h-card-b {
+      transform: translateY(60px) rotate(6deg);
+    }
+
+    .h-card-inner {
+      width: 130px;
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-alt));
+    }
+
+    /* Sub & CTA */
+    .hero-sub {
+      margin-top: var(--sp-2xl);
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(16px, 1.8vw, 21px);
+      color: var(--text-sec);
+      text-align: center;
+      max-width: 440px;
+      line-height: 1.65;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      margin-top: var(--sp-2xl);
+      opacity: 0;
+    }
+
+    .btn-sig {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: #000000;
+      color: #ffffff;
+      border-radius: var(--r-pill);
+      padding: 13px 28px;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: none;
+      box-shadow: var(--shadow-btn);
+      transition: transform .4s var(--ease-spring), box-shadow .3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-sig:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: var(--shadow-btn), 0 0 0 4px rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-icon {
+      width: 28px;
+      height: 28px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .btn-icon svg {
+      width: 14px;
+      height: 14px;
+      color: #000;
+    }
+
+    .btn-arrow {
+      transition: transform .25s var(--ease);
+      opacity: .7;
+    }
+
+    .btn-sig:hover .btn-arrow {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-ter);
+    }
+
+    .scroll-line {
+      width: 32px;
+      height: 1px;
+      background: var(--text-ter);
+    }
+
+    /* ══════ SKILL PILLS ══════ */
+    .pills-left,
+    .pills-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 3;
+    }
+
+    .pills-left {
+      left: 32px;
+      align-items: flex-start;
+    }
+
+    .pills-right {
+      right: 32px;
+      align-items: flex-end;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 0, 0, .07);
+      border-radius: var(--r-pill);
+      padding: 10px 18px 10px 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #000;
+      white-space: nowrap;
+      cursor: default;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform .3s var(--ease-spring), box-shadow .3s var(--ease);
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    }
+
+    .pill-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pill-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .icon-orange { background: #FF5B14; }
+    .icon-dark { background: #1a1a1a; }
+    .icon-blue { background: #2C9BF0; }
+    .icon-green { background: #2ECC71; }
+    .icon-pink { background: #E91E8C; }
+    .icon-yellow { background: #F5B400; }
+
+    /* ══════════════════════════════════════
+   SECTION BASE
+══════════════════════════════════════ */
+    section {
+      padding: var(--sp-6xl) 48px;
+      position: relative;
+    }
+
+    .sec-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-md);
+      margin-bottom: var(--sp-md);
+    }
+
+    .sec-eyebrow span {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--text-sec);
+    }
+
+    .sec-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(255, 255, 255, .15);
+    }
+
+    .sec-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.4em;
+      text-align: center;
+      margin-bottom: var(--sp-5xl);
+    }
+
+    .sec-max {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════
+   WORK
+══════════════════════════════════════ */
+    .work-section {
+      background: transparent;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: var(--sp-2xl);
+    }
+
+    .work-card {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+      background: var(--bg-dark);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .work-card-main {
+      aspect-ratio: 4/3;
+    }
+
+    .work-card-side {
+      display: grid;
+      gap: var(--sp-2xl);
+    }
+
+    .work-card-sm {
+      aspect-ratio: 16/10;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-dark-alt);
+      box-shadow: var(--shadow-heavy);
+      cursor: none;
+    }
+
+    .work-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--sp-xl);
+      background: linear-gradient(to top, rgba(0,0,0,.9) 0%, transparent 100%);
+      color: #fff;
+    }
+
+    .work-card-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: -.01em;
+    }
+
+    .work-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .work-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .card-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-alt));
+    }
+
+    /* ══════════════════════════════════════
+   ABOUT
+══════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-5xl);
+      align-items: start;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--r-2xl);
+      box-shadow: var(--shadow-heavy);
+      background: linear-gradient(135deg, #1f1f1f, #111111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+
+    .about-tag {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--surface);
+      color: #000;
+      border-radius: var(--r-xl);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(255, 255, 255, .4);
+      text-align: center;
+    }
+
+    .about-tag-num {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      color: var(--accent);
+    }
+
+    .about-tag-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(0,0,0,.5);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .about-name {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin-bottom: 6px;
+    }
+
+    .about-role {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-sec);
+      margin-bottom: var(--sp-2xl);
+    }
+
+    .about-bio {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: var(--sp-3xl);
+    }
+
+    .about-exp {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .exp-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-lg) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .exp-role {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .exp-co, .exp-period {
+      font-size: 12px;
+      color: var(--text-sec);
+    }
+    
+    .exp-period {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .about-socials {
+      display: flex;
+      gap: var(--sp-sm);
+      margin-top: var(--sp-xl);
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      box-shadow: var(--shadow-card);
+      transition: transform .3s var(--ease-spring), box-shadow .2s;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ══════════════════════════════════════
+   PROCESS & TESTIMONIALS
+══════════════════════════════════════ */
+    .process-section {
+      background: var(--bg-alt);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-2xl);
+      margin-bottom: var(--sp-4xl);
+    }
+
+    .process-card, .test-card {
+      background: var(--surface);
+      color: #000;
+      border-radius: var(--r-xl);
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, .5);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .process-card:hover::before {
+      opacity: 1;
+    }
+
+    .process-num {
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -.06em;
+      color: rgba(0, 0, 0, .06);
+      margin-bottom: var(--sp-xl);
+      line-height: 1;
+    }
+
+    .process-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin-bottom: var(--sp-sm);
+    }
+
+    .process-desc {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 1.7;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2xl);
+    }
+
+    .test-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0, 0, 0, 0.7);
+      font-style: italic;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .test-author {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-md);
+    }
+
+    .test-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #000;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .test-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .test-co {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* ══════════════════════════════════════
+   PRICING
+══════════════════════════════════════ */
+    .mesh-bg {
+      background: radial-gradient(circle at 10% 20%, rgba(255, 55, 0, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 40%);
+      background-color: var(--bg);
+    }
+
+    .pricing-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-radius: var(--r-xl);
+      padding: var(--sp-3xl);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.05), 12px 16px 16px 0px rgba(0, 0, 0, 0.3);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--sp-2xl);
+      max-width: 960px;
+      margin: 0 auto;
+      color: #fff;
+    }
+
+    .p-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .p-toggle-lbl {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .p-toggle-lbl.dim {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .toggle-sw {
+      position: relative;
+      width: 46px;
+      height: 26px;
+      cursor: none;
+    }
+
+    .toggle-sw input {
+      opacity: 0;
+      position: absolute;
+    }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: background .3s;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+      transition: transform .3s var(--ease-spring);
+    }
+
+    .toggle-sw input:checked~.toggle-track {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .toggle-sw input:checked~.toggle-thumb {
+      transform: translateX(20px);
+    }
+
+    .p-price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: var(--sp-lg);
+    }
+
+    .p-amount {
+      font-family: 'Inter', sans-serif;
+      font-size: 72px;
+      font-weight: 600;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .p-suffix {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .p-avail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: var(--sp-md);
+    }
+
+    .p-avail-dot {
+      width: 8px;
+      height: 8px;
+      background: #2ECC71;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+    }
+
+    .pricing-right {
+      background: #ffffff;
+      border-radius: var(--r-2xl);
+      padding: 32px;
+      color: #000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+
+    .pricing-right-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .feat-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: var(--sp-2xl);
+    }
+
+    .feat-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(0,0,0,.7);
+    }
+
+    .feat-icon {
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid rgba(0, 0, 0, .1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feat-icon svg {
+      width: 12px;
+      height: 12px;
+      color: rgba(0,0,0,.5);
+    }
+
+    /* ══════════════════════════════════════
+   FAQ
+══════════════════════════════════════ */
+    .faq-section {
+      background: transparent;
+    }
+
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--sp-2xl);
+      align-items: start;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .faq-card {
+      background: var(--surface);
+      color: #000;
+      border-radius: var(--r-xl);
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, .5);
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: 120px;
+    }
+
+    .faq-person {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .faq-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #000;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .faq-q-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .faq-divider {
+      height: 1px;
+      background: rgba(0, 0, 0, .1);
+      margin: var(--sp-lg) 0;
+    }
+
+    .btn-faq {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #000;
+      color: #fff;
+      border-radius: var(--r-pill);
+      padding: 14px;
+      border: none;
+      cursor: none;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-btn);
+      transition: transform .3s var(--ease-spring);
+    }
+
+    .btn-faq:hover {
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    .faq-email {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 13px;
+      color: rgba(0,0,0,0.5);
+    }
+
+    .faq-email a {
+      color: rgba(0,0,0,0.8);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .faq-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: none;
+      text-align: left;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      transition: color .2s;
+    }
+
+    .faq-btn:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .faq-plus {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 20px;
+      line-height: 1;
+      transition: transform .3s var(--ease), border-color .2s;
+    }
+
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+      border-color: var(--accent);
+    }
+
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .4s var(--ease);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 240px;
+    }
+
+    .faq-answer p {
+      padding-bottom: var(--sp-xl);
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════
+   FOOTER CTA
+══════════════════════════════════════ */
+    .footer-cta {
+      background: #0a0a0a;
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+      margin: 0 16px;
+      padding: var(--sp-6xl) 48px var(--sp-4xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(255, 55, 0, .15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .footer-cta h2 {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      letter-spacing: -.05em;
+      color: #fff;
+      margin-bottom: var(--sp-lg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-cta h2 em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      color: rgba(255, 255, 255, .35);
+    }
+
+    .footer-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .5);
+      max-width: 440px;
+      margin: 0 auto var(--sp-4xl);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--sp-5xl);
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      color: #000;
+      border-radius: var(--r-pill);
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+      transition: transform .4s var(--ease-spring);
+      border: none;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      padding-top: var(--sp-2xl);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--sp-xl);
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .4);
+      transition: color .2s;
+      cursor: none;
+    }
+
+    .footer-links a:hover {
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    /* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+    @media(max-width:900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: var(--sp-5xl) 24px; }
+      .work-grid, .about-grid, .test-grid, .pricing-card, .faq-inner { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .faq-card { position: static; }
+      /* pills & cards controlled by GSAP — initial state via opacity:0 */
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+
+    @media(max-width:600px) {
+      .h-word { font-size: 48px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-cta { margin: 0; border-radius: 0; }
+    }
+  </style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+  <div class="noise"></div>
+
+  <div class="curtain" id="curtain">
+    <div class="curtain-logo" id="curtainLogo">Studio.</div>
+  </div>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="progress" id="progress"></div>
+
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <div class="nav-dot"></div>
+      Studio
+    </div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#faq" class="nav-cta magnetic">Book a Call →</a>
+  </nav>
+
+  <div class="hero-pin" id="heroPin">
+    <div class="hero-sticky" id="heroSticky">
+
+```
+  <div class="pills-left">
+    <div class="skill-pill" id="pill1">
+      <div class="pill-icon icon-orange">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="white"></rect><rect x="14" y="3" width="7" height="7" rx="1.5" fill="white"></rect><rect x="3" y="14" width="7" height="7" rx="1.5" fill="white"></rect><rect x="14" y="14" width="7" height="7" rx="1.5" fill="white"></rect></svg>
+      </div>
+      Design Systems
+    </div>
+    <div class="skill-pill" id="pill2">
+      <div class="pill-icon icon-dark">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="white" stroke-width="2"></rect><rect x="8" y="8" width="8" height="8" rx="1" fill="white"></rect></svg>
+      </div>
+      UX Design
+    </div>
+    <div class="skill-pill" id="pill3">
+      <div class="pill-icon icon-blue">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="white" stroke-width="2"></circle><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"></circle><circle cx="12" cy="12" r="1.5" fill="white"></circle></svg>
+      </div>
+      Research
+    </div>
+  </div>
+
+  <div class="status-pill" id="sPill">
+    <div class="nav-dot" style="box-shadow: 0 0 10px rgba(46,204,113,0.5)"></div>
+    Available to work
+  </div>
+
+  <div class="hero-headline">
+    <div class="h-row">
+      <span class="h-word-wrap"><span class="h-word" id="w1">Brands</span></span>
+      <div class="h-card" id="hc1">
+        <div class="h-card-inner">📐</div>
+      </div>
+      <span class="h-word-wrap"><span class="h-word dim" id="w2">Grow</span></span>
+    </div>
+    <div class="h-row">
+      <span class="h-word-wrap"><span class="h-word dim" id="w3">Fast</span></span>
+      <div class="h-card h-card-b" id="hc2">
+        <div class="h-card-inner">✦</div>
+      </div>
+      <span class="h-word-wrap"><span class="h-word" id="w4">With us</span></span>
+    </div>
+  </div>
+
+  <p class="hero-sub" id="hSub">
+    We don't just make brands pretty —<br>
+  we craft smart design that fuels<br>real business growth.
+  </p>
+
+  <div class="hero-cta" id="hCta">
+    <a href="#faq" class="btn-sig magnetic">
+      <div class="btn-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M5 4H11C15.4 4 19 7.6 19 12C19 16.4 15.4 20 11 20H5V4Z" fill="black"></path>
+          <path d="M12 9.5L12.7 11.3L14.5 12L12.7 12.7L12 14.5L11.3 12.7L9.5 12L11.3 11.3L12 9.5Z" fill="white"></path>
+        </svg>
+      </div>
+      Book a Meeting
+      <span class="btn-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="pills-right">
+    <div class="skill-pill" id="pill4">
+      <div class="pill-icon icon-green">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 4C12 4 16 6 16 12C16 18 12 20 12 20" stroke="white" stroke-width="2" stroke-linecap="round"></path><path d="M12 4C12 4 8 6 8 12C8 18 12 20 12 20" stroke="white" stroke-width="2" stroke-linecap="round"></path><line x1="4" y1="12" x2="20" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"></line></svg>
+      </div>
+      Animation
+    </div>
+    <div class="skill-pill" id="pill5">
+      <div class="pill-icon icon-pink">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3L13.5 9H19.5L14.5 13L16.5 19L12 15.5L7.5 19L9.5 13L4.5 9H10.5L12 3Z" fill="white"></path></svg>
+      </div>
+      Branding
+    </div>
+    <div class="skill-pill" id="pill6">
+      <div class="pill-icon icon-yellow">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" fill="white"></circle><circle cx="5" cy="19" r="2" fill="white"></circle><circle cx="19" cy="19" r="2" fill="white"></circle><line x1="12" y1="7" x2="6" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"></line><line x1="12" y1="7" x2="18" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"></line><line x1="7" y1="19" x2="17" y2="19" stroke="white" stroke-width="1.5" stroke-linecap="round"></line></svg>
+      </div>
+      Strategy
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <section class="work-section" id="work">
+    <div class="sec-max">
+      <div class="sec-eyebrow">
+        <div class="sec-line"></div>
+        <span>Selected Work</span>
+        <div class="sec-line"></div>
+      </div>
+      <h2 class="sec-title">Recent Case Studies</h2>
+
+```
+  <div class="work-grid">
+    <div class="work-card work-card-main gsap-reveal">
+      <div class="card-placeholder">🏢</div>
+      <div class="work-card-info">
+        <div class="work-card-title">F&amp;L Tax</div>
+        <div class="work-tags">
+          <span class="work-tag">Tax</span>
+          <span class="work-tag">·</span>
+          <span class="work-tag">Agency</span>
+        </div>
+      </div>
+    </div>
+    <div class="work-card-side">
+      <div class="work-card-sm gsap-reveal">
+        <div class="card-placeholder" style="font-size:36px">💊</div>
+        <div class="work-card-info">
+          <div class="work-card-title">Puls</div>
+          <div class="work-tags"><span class="work-tag">Wellness</span></div>
+        </div>
+      </div>
+      <div class="work-card-sm gsap-reveal">
+        <div class="card-placeholder" style="font-size:36px">👁</div>
+        <div class="work-card-info">
+          <div class="work-card-title">EyeCatcher</div>
+          <div class="work-tags"><span class="work-tag">Beauty</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="about">
+    <div class="sec-max">
+      <div class="sec-eyebrow">
+        <div class="sec-line"></div>
+        <span>The Founder</span>
+        <div class="sec-line"></div>
+      </div>
+      <h2 class="sec-title">Pushing Brands Since 2023</h2>
+
+```
+  <div class="about-grid">
+    <div class="about-img-wrap gsap-reveal">
+      <div class="about-img-placeholder">🧑‍💻</div>
+      <div class="about-tag">
+        <div class="about-tag-num">2+</div>
+        <div class="about-tag-lbl">Years</div>
+      </div>
+    </div>
+
+    <div class="about-content gsap-reveal">
+      <h3 class="about-name">Deniz Ulmer</h3>
+      <p class="about-role">Founder &amp; Creative Director</p>
+      <p class="about-bio">
+        UI/UX designer from Stuttgart, Germany who blends function with emotion.
+        As a Framer and Shopify Partner, he helps startups create clear interfaces
+        and strong brands that actually drive growth.
+      </p>
+
+      <div class="about-exp">
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Founder</div>
+            <div class="exp-co">Denqid Studio</div>
+          </div>
+          <div class="exp-period">2024 — Now</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">UI/UX Designer</div>
+            <div class="exp-co">Freelance</div>
+          </div>
+          <div class="exp-period">2023 — 2024</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Design Lead</div>
+            <div class="exp-co">Agency X</div>
+          </div>
+          <div class="exp-period">2022 — 2023</div>
+        </div>
+      </div>
+
+      <div class="about-socials">
+        <a href="#" class="social-btn magnetic" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"></circle></svg>
+        </a>
+        <a href="#" class="social-btn magnetic" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4V9h4v1.5"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="#" class="social-btn magnetic" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section class="process-section" id="process">
+    <div class="sec-max">
+      <div class="sec-eyebrow">
+        <div class="sec-line"></div>
+        <span>Our Process, Explained</span>
+        <div class="sec-line"></div>
+      </div>
+      <h2 class="sec-title">Here's how it works</h2>
+
+```
+  <div class="process-grid">
+    <div class="process-card gsap-reveal">
+      <div class="process-num">1</div>
+      <div class="process-title">Discover</div>
+      <p class="process-desc">We uncover what drives your brand through purpose clarity, audience insight, and business focus.</p>
+    </div>
+    <div class="process-card gsap-reveal">
+      <div class="process-num">2</div>
+      <div class="process-title">Research</div>
+      <p class="process-desc">We analyze your market, understand your competitors, and identify where you can truly stand out.</p>
+    </div>
+    <div class="process-card gsap-reveal">
+      <div class="process-num">3</div>
+      <div class="process-title">Create</div>
+      <p class="process-desc">We design a distinct identity using voice, visuals, and story to build emotional connection.</p>
+    </div>
+    <div class="process-card gsap-reveal">
+      <div class="process-num">4</div>
+      <div class="process-title">Activate</div>
+      <p class="process-desc">We launch across all channels, creating a consistent experience that grows with you over time.</p>
+    </div>
+  </div>
+
+  <div class="test-grid">
+    <div class="test-card gsap-reveal">
+      <p class="test-text">"Working with this studio was unbelievable. He instantly understood our vision and translated it into a sleek, intuitive website. The process felt completely effortless."</p>
+      <div class="test-author">
+        <div class="test-avatar">T</div>
+        <div>
+          <div class="test-name">Tech Startup</div>
+          <div class="test-co">Product Launch</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card gsap-reveal">
+      <p class="test-text">"Brings clarity to chaos. The design work is not only beautiful but deeply strategic. Helped us rebrand from the ground up with remarkable precision."</p>
+      <div class="test-author">
+        <div class="test-avatar">W</div>
+        <div>
+          <div class="test-name">Wellness Brand</div>
+          <div class="test-co">Rebrand Project</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="pricing" class="mesh-bg">
+    <div class="sec-max">
+      <div class="sec-eyebrow">
+        <div class="sec-line"></div>
+        <span>Pricing</span>
+        <div class="sec-line"></div>
+      </div>
+      <h2 class="sec-title">Fixed Price, Zero Limits</h2>
+
+```
+  <div class="pricing-card gsap-reveal">
+    <div class="pricing-left">
+      <div class="p-toggle">
+        <span class="p-toggle-lbl">Design</span>
+        <label class="toggle-sw">
+        <input type="checkbox" id="planToggle">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+        <span class="p-toggle-lbl dim">Branding</span>
+      </div>
+      <div class="p-price">
+        <span class="p-amount" id="pAmount">40€</span>
+        <span class="p-suffix" id="pSuffix">per Hour</span>
+      </div>
+      <div style="flex:1;min-height:60px;"></div>
+      <div class="p-avail">
+        <div class="p-avail-dot"></div>
+        Available to work
+      </div>
+      <a href="#" class="btn-sig magnetic" style="display:inline-flex;margin-top:8px;">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 4H11C15.4 4 19 7.6 19 12C19 16.4 15.4 20 11 20H5V4Z" fill="black"></path>
+            <path d="M12 9.5L12.7 11.3L14.5 12L12.7 12.7L12 14.5L11.3 12.7L9.5 12L11.3 11.3L12 9.5Z" fill="white"></path>
+          </svg>
+        </div>
+        Book a Meeting
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+    <div class="pricing-right">
+      <div class="pricing-right-title">What's included</div>
+      <ul class="feat-list">
+        <li><div class="feat-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>Online communication</li>
+        <li><div class="feat-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>Unlimited design requests</li>
+        <li><div class="feat-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>Fast turnaround (1–2 days)</li>
+        <li><div class="feat-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>Fixed monthly rate</li>
+        <li><div class="feat-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></div>Flexible scope</li>
+      </ul>
+      <div style="border-top:1px solid rgba(0,0,0,.08);padding-top:20px;">
+        <p style="font-size:13px;color:rgba(0,0,0,0.6);font-style:italic;line-height:1.7;margin-bottom:16px;">
+          "Deniz created a website that exceeded all expectations. Professional, creative, and reliable."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;">D</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;">David Krzemien</div>
+            <div style="font-size:12px;color:rgba(0,0,0,0.5);">FeuersteinCars</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="sec-eyebrow">
+      <div class="sec-line"></div>
+      <span>FAQ</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2 class="sec-title">Your Questions, Answered</h2>
+
+```
+<div class="faq-inner">
+  <div class="faq-card">
+    <div class="faq-person">
+      <div class="faq-avatar">D</div>
+      <div>
+        <div class="faq-q-title">Have more questions?<br>Book a free discovery call</div>
+      </div>
+    </div>
+    <div class="faq-divider"></div>
+    <button class="btn-faq magnetic">
+    <div class="btn-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M5 4H11C15.4 4 19 7.6 19 12C19 16.4 15.4 20 11 20H5V4Z" fill="black"></path>
+        <path d="M12 9.5L12.7 11.3L14.5 12L12.7 12.7L12 14.5L11.3 12.7L9.5 12L11.3 11.3L12 9.5Z" fill="white"></path>
+      </svg>
+    </div>
+    Book a Meeting →
+  </button>
+    <p class="faq-email">Or, email at <a href="/cdn-cgi/l/email-protection#543c3138383b14272021303d3b7a373b39"><span class="__cf_email__" data-cfemail="80e8e5ececefc0f3f4f5e4e9efaee3efed">[email&#160;protected]</span></a></p>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFAQ(this)">
+      Difference between hourly and branding?
+      <span class="faq-plus">+</span>
+    </button>
+      <div class="faq-answer">
+        <p>Branding is ongoing and flexible — ideal for startups' evolving design needs. Hourly rates are for one-time, fixed-scope engagements like a single landing page.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFAQ(this)">
+      What types of design do you handle?
+      <span class="faq-plus">+</span>
+    </button>
+      <div class="faq-answer">
+        <p>Web design, Branding, Product UI, Landing Pages, E-Commerce, Brand Assets, Decks, and anything digital that needs to look sharp and convert.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFAQ(this)">
+      How many requests can I make?
+      <span class="faq-plus">+</span>
+    </button>
+      <div class="faq-answer">
+        <p>As many as you like! With a subscription, you can queue unlimited requests, and they'll be handled one at a time in priority order.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFAQ(this)">
+      Do you offer development too?
+      <span class="faq-plus">+</span>
+    </button>
+      <div class="faq-answer">
+        <p>We focus on design and branding primarily using Framer and Webflow. All deliverables are dev-ready if you have your own engineering team.</p>
+      </div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <button class="faq-btn" onclick="toggleFAQ(this)">
+      How fast is the turnaround?
+      <span class="faq-plus">+</span>
+    </button>
+      <div class="faq-answer">
+        <p>Most requests are completed within 1–2 business days. Complex projects may take longer but we'll always keep you updated on progress.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <footer class="footer-cta" id="contact">
+    <div class="footer-glow"></div>
+    <h2 class="gsap-reveal">Let's <em>Connect</em></h2>
+    <p class="footer-sub gsap-reveal">Available for new projects or just for chatting. Let's build something extraordinary together.</p>
+    <div class="footer-btn-wrap gsap-reveal">
+      <a href="#" class="btn-light magnetic">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 4H11C15.4 4 19 7.6 19 12C19 16.4 15.4 20 11 20H5V4Z" fill="black"></path><path d="M12 9.5L12.7 11.3L14.5 12L12.7 12.7L12 14.5L11.3 12.7L9.5 12L11.3 11.3L12 9.5Z" fill="white"></path></svg>
+        </div>
+        Book a Meeting
+        <span class="btn-arrow" style="color:#000">→</span>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">Studio.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Legal Notice</a>
+      </div>
+      <div class="footer-copy">© 2025 Studio. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+const curtain = document.getElementById('curtain');
+const curtainLogo = document.getElementById('curtainLogo');
+
+gsap.timeline()
+  .to(curtainLogo, { opacity:1, duration:.6, ease:'power2.out' })
+  .to(curtainLogo, { opacity:0, duration:.4, ease:'power2.in' }, '+=0.5')
+  .to(curtain, {
+    scaleY:0, transformOrigin:'bottom',
+    duration:1.1, ease:'power4.inOut'
+  }, '-=0.15')
+  .set(curtain, { display:'none' });
+
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = (mx-4)+'px';
+  dot.style.top = (my-4)+'px';
+});
+(function animRing(){
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  ring.style.left = (rx-18)+'px';
+  ring.style.top = (ry-18)+'px';
+  requestAnimationFrame(animRing);
+})();
+
+document.querySelectorAll('a,button,.work-card,.work-card-sm,.process-card,.social-btn,.test-card,.faq-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX-r.left-r.width/2;
+    const y = e.clientY-r.top-r.height/2;
+    gsap.to(btn,{x:x*.3,y:y*.3,duration:.4,ease:'power2.out'});
+  });
+  btn.addEventListener('mouseleave',()=>{
+    gsap.to(btn,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'});
+  });
+});
+
+gsap.to('#progress',{
+  width:'100%', ease:'none',
+  scrollTrigger:{trigger:'body',start:'top top',end:'bottom bottom',scrub:true}
+});
+
+const heroTL = gsap.timeline({ delay:1.7 });
+heroTL
+  .to('#sPill', { opacity:1, rotation: -2, y:0, duration:.9, ease:'back.out(1.2)' })
+  .to(['#w1','#w2','#w3','#w4'], {
+    y:0, opacity:1, duration:1,
+    stagger:.07, ease:'power4.out'
+  }, '-=0.5')
+  .to(['#hc1','#hc2'], {
+    y:0, opacity:1,
+    rotation:(i)=>i===0?-13:6,
+    duration:1.1, stagger:.1,
+    ease:'back.out(1.4)'
+  }, '-=0.9')
+  .to('#hSub', { opacity:1, duration:.9, ease:'power2.out' }, '-=0.5')
+  .to('#hCta', { opacity:1, y:0, duration:.8, ease:'power2.out' }, '-=0.6')
+  .to(['#pill1','#pill2','#pill3','#pill4','#pill5','#pill6'],{
+    opacity:1, y:0, stagger:.1, duration:.7, ease:'back.out(1.4)'
+  },'-=0.4');
+
+gsap.to('#hc1',{
+  yPercent:-40, rotation:-20, ease:'none',
+  scrollTrigger:{trigger:'#heroPin',start:'top top',end:'bottom top',scrub:1.5}
+});
+gsap.to('#hc2',{
+  yPercent:-28, rotation:18, ease:'none',
+  scrollTrigger:{trigger:'#heroPin',start:'top top',end:'bottom top',scrub:1.5}
+});
+
+gsap.timeline({
+  scrollTrigger:{trigger:'#heroPin',start:'top top',end:'55% top',scrub:true}
+})
+.to('#w1',{color:'rgba(255,255,255,0.25)',duration:1},0)
+.to('#w2',{color:'#ffffff',   duration:1},0)
+.to('#w3',{color:'#ffffff',   duration:1},0)
+.to('#w4',{color:'rgba(255,255,255,0.25)',duration:1},0);
+
+gsap.to(['#hSub','#hCta'],{
+  opacity:0, y:-24, ease:'none',
+  scrollTrigger:{trigger:'#heroPin',start:'8% top',end:'30% top',scrub:true}
+});
+gsap.to('#sPill',{
+  opacity:0, y:-16, ease:'none',
+  scrollTrigger:{trigger:'#heroPin',start:'4% top',end:'22% top',scrub:true}
+});
+gsap.to(['#pill1','#pill2','#pill3','#pill4','#pill5','#pill6'],{
+  opacity:0, ease:'none',
+  scrollTrigger:{trigger:'#heroPin',start:'5% top',end:'25% top',scrub:true}
+});
+
+gsap.utils.toArray('.gsap-reveal').forEach((el,i)=>{
+  gsap.from(el,{
+    opacity:0, y:48, duration:1,
+    ease:'power3.out',
+    scrollTrigger:{
+      trigger:el,start:'top 85%',
+      toggleActions:'play none none none'
+    },
+    delay:(i%3)*.08
+  });
+});
+
+document.getElementById('planToggle').addEventListener('change', function(){
+  const amt = document.getElementById('pAmount');
+  const suf = document.getElementById('pSuffix');
+  if(this.checked){
+    gsap.to(amt,{opacity:0,y:-10,duration:.2,onComplete:()=>{
+      amt.textContent='2,499€'; suf.textContent='per Month';
+      gsap.to(amt,{opacity:1,y:0,duration:.3,ease:'power2.out'});
+    }});
+  } else {
+    gsap.to(amt,{opacity:0,y:10,duration:.2,onComplete:()=>{
+      amt.textContent='40€'; suf.textContent='per Hour';
+      gsap.to(amt,{opacity:1,y:0,duration:.3,ease:'power2.out'});
+    }});
+  }
+});
+
+function toggleFAQ(btn){
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+let lastScroll=0;
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  const cur = window.scrollY;
+  if(cur > lastScroll + 8) {
+    nav.classList.add('nav-hide');
+  } else if(cur < lastScroll - 4) {
+    nav.classList.remove('nav-hide');
+  }
+  lastScroll = cur <= 0 ? 0 : cur;
+});
+  </script>
+
+</body>
+</html>
