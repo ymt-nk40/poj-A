@@ -1,0 +1,110 @@
+
+  ._btn--primary_1eovz_13 {
+  	background-color: #ee4503;
+  	color: #fff;
+  }
+
+  ._btn--primary_1eovz_13:hover {
+  	background-color: #020011;
+  }
+
+  ._section_759fq_1 {
+  	width: 100%;
+  	height: calc(100vh + 100px);
+  	position: relative;
+  }
+
+  ._section_759fq_1 ._content_759fq_6 {
+  	display: flex;
+  	flex-direction: column;
+  	gap: 16px;
+  	margin: 56px 0 56px 64px;
+  	max-width: 206px;
+  	position: relative;
+  	z-index: 10;
+  }
+
+  ._section_759fq_1 ._content_759fq_6 ._title_759fq_15 {
+  	color: #020011;
+  	font-family: Whyte Inktrap, serif;
+  	font-size: 32px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: 120%;
+  }
+
+  ._section_759fq_1 ._content_759fq_6 ._description_759fq_23 {
+  	color: #12120f;
+  	font-family: Chillax, serif;
+  	font-size: 16px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: 120%;
+  }
+
+  ._section_759fq_1 ._image_759fq_31 {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	display: flex;
+  	justify-content: center;
+  	animation: _float_759fq_1 3s ease-in-out infinite alternate;
+  }
+
+  ._section_759fq_1 ._imageMobile_759fq_40 {
+  	display: none;
+  }
+
+  ._section_759fq_1 ._circle_759fq_43 {
+  	position: absolute;
+  	top: 36px;
+  	left: 0;
+  	right: 0;
+  	display: flex;
+  	justify-content: center;
+  	z-index: -1;
+  }
+
+  @media (max-width: 1024px) {
+    ._section_759fq_1 {
+    		padding: 56px 0 0;
+    		height: 100%;
+    	}
+  
+    ._section_759fq_1 ._content_759fq_6 {
+    		padding: 0;
+    		margin: 0 auto;
+    		max-width: 358px;
+    		gap: 12px;
+    	}
+  
+    ._section_759fq_1 ._content_759fq_6 ._title_759fq_15 {
+    		text-align: center;
+    		font-size: 20px;
+    	}
+  
+    ._section_759fq_1 ._content_759fq_6 ._description_759fq_23 {
+    		text-align: center;
+    		font-size: 16px;
+    	}
+  
+    ._section_759fq_1 ._content_759fq_6 ._button_759fq_80 {
+    		width: 160px;
+    		margin: 4px auto 0;
+    	}
+  
+    ._section_759fq_1 ._image_759fq_31 {
+    		display: none;
+    	}
+  
+    ._section_759fq_1 ._imageMobile_759fq_40 {
+    		margin: 26px auto 0;
+    		display: flex;
+    		justify-content: center;
+    	}
+  
+    ._section_759fq_1 ._circle_759fq_43 {
+    		display: none;
+    	}
+  }

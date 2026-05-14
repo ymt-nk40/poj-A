@@ -1,0 +1,247 @@
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Extralight.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Extralight.woff") format("woff"),
+		url("../assets/fonts/Chillax-Extralight.ttf") format("truetype");
+	font-weight: 200;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Light.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Light.woff") format("woff"),
+		url("../assets/fonts/Chillax-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Regular.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Regular.woff") format("woff"),
+		url("../assets/fonts/Chillax-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Medium.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Medium.woff") format("woff"),
+		url("../assets/fonts/Chillax-Medium.ttf") format("truetype");
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Semibold.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Semibold.woff") format("woff"),
+		url("../assets/fonts/Chillax-Semibold.ttf") format("truetype");
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("../assets/fonts/Chillax-Bold.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Bold.woff") format("woff"),
+		url("../assets/fonts/Chillax-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax-Variable;
+	src: url("../assets/fonts/Chillax-Variable.woff2") format("woff2"),
+		url("../assets/fonts/Chillax-Variable.woff") format("woff"),
+		url("../assets/fonts/Chillax-Variable.ttf") format("truetype");
+	font-weight: 200 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Thin.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Thin.woff") format("woff");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Light.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Regular.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Medium.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Bold.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("../assets/fonts/WhyteInktrap-Black.woff2") format("woff2"),
+		url("../assets/fonts/WhyteInktrap-Black.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: Chillax-Regular, sans-serif;
+	overflow-x: hidden;
+	height: 100%;
+}
+
+body {
+	background-color: #f3f3f3;
+	height: 100%;
+}
+
+#root {
+	height: 100%;
+}
+
+.container {
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+h1 {
+	color: #020011;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: Whyte Inktrap, serif;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 120%;
+}
+
+h3 {
+	color: #020011;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: Whyte Inktrap, serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 120%;
+}
+
+.titleS {
+	font-family: Chillax, serif;
+	color: #282828;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+	letter-spacing: -0.286px;
+}
+
+select {
+	color: #9a99a0;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: relative;
+}
+
+input[type="checkbox"] {
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 20px;
+	max-height: 20px;
+	background-color: #fff;
+	border: none;
+	border-radius: 2px 4px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: relative;
+}
+
+input[type="checkbox"]:checked {
+	border: 1px solid #ee4503;
+}
+
+input[type="checkbox"]:checked::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 3px;
+	width: 12px;
+	height: 12px;
+	background: url(data:image/svg+xml,%3csvg%20width='15'%20height='15'%20viewBox='0%200%2015%2015'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.3584%2014.0918C5.94173%2014.0918%205.58757%2013.9121%205.2959%2013.5527L1.24902%208.56836C1.13444%208.43294%201.05111%208.30013%200.999023%208.16992C0.952148%208.03971%200.928711%207.9043%200.928711%207.76367C0.928711%207.45117%201.03288%207.19336%201.24121%206.99023C1.44954%206.78711%201.71257%206.68555%202.03027%206.68555C2.38965%206.68555%202.69173%206.83919%202.93652%207.14648L6.32715%2011.4434L12.9443%200.958984C13.0798%200.750651%2013.2204%200.604818%2013.3662%200.521484C13.512%200.432943%2013.6943%200.388672%2013.9131%200.388672C14.2308%200.388672%2014.4912%200.48763%2014.6943%200.685547C14.8975%200.883464%2014.999%201.13607%2014.999%201.44336C14.999%201.56836%2014.9782%201.69336%2014.9365%201.81836C14.8949%201.94336%2014.8298%202.07357%2014.7412%202.20898L7.42871%2013.5215C7.17871%2013.9017%206.82194%2014.0918%206.3584%2014.0918Z'%20fill='%23EE4503'/%3e%3c/svg%3e) no-repeat center center;
+	background-size: contain;
+}
+
+
+
+
+
+@media (max-width: 1024px) {
+	.container {
+		padding: 0 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 0;
+	}
+}
+
+#insights-updates-section .insights-updates-slide:not(.swiper-slide-active) {
+	transform: scale(.5) translatey(330px) !important;
+}
+
+@media (max-width: 768px) {
+	#insights-updates-section .insights-updates-slide:not(.swiper-slide-active) {
+		transform: none;
+	}
+}

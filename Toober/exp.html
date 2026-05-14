@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sidebar UI</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=chillax@400,500,600&display=swap');
+
+    :root {
+      /* Colors */
+      --color-primary: #ee4503;
+      --color-primary-hover: #ff5511;
+      --color-bg: #0a0818;
+      --color-surface: #020011;
+      --color-text: #ffffff;
+      --color-muted: #8b8fa8;
+      --color-border: #1e1a2e;
+      --color-search-bg: #1a1530;
+      --color-hover: #1a1530;
+      --color-active-bg: rgba(238, 69, 3, 0.1);
+
+      /* Typography */
+      --font-family: 'Chillax', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: var(--font-family);
+      padding: 40px;
+    }
+
+    .sidebar {
+      position: relative;
+      width: 260px;
+      height: 680px;
+      background-color: var(--color-surface);
+      border-radius: 20px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .sidebar-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 20px 14px;
+      overflow: hidden;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(238,69,3,0.5);
+      transition: transform 0.2s ease, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .sidebar-toggle:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 6px 18px;
+    }
+
+    .sidebar-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px 5px;
+      background: linear-gradient(135deg, var(--color-primary), #ff6b1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand-info {
+      white-space: nowrap;
+    }
+
+    .sidebar-brand-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-brand-subtitle {
+      font-size: 11px;
+      color: var(--color-muted);
+      margin-top: 1px;
+    }
+
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background-color: var(--color-search-bg);
+      margin-bottom: 16px;
+      cursor: text;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 13px;
+      width: 100%;
+      color: var(--color-text);
+    }
+
+    .search-input::placeholder {
+      color: var(--color-muted);
+    }
+
+    .sidebar-scroll-area {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .sidebar-scroll-area::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    .sidebar-section-title {
+      color: var(--color-muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px 4px;
+      white-space: nowrap;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--color-text);
+      user-select: none;
+    }
+
+    .nav-link:hover {
+      background-color: var(--color-hover);
+    }
+
+    .nav-link-active {
+      background-color: var(--color-active-bg);
+      color: var(--color-primary);
+    }
+
+    .nav-link-active:hover {
+      background-color: var(--color-active-bg);
+    }
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-muted);
+    }
+
+    .nav-link-active .nav-icon {
+      color: var(--color-primary);
+    }
+
+    .nav-text {
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--color-primary);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      min-width: 22px;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    .nav-tooltip {
+      position: absolute;
+      left: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: #020011;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Used only when sidebar is collapsed (omitted from layout logic for pure CSS but kept for completeness) */
+    .nav-link.collapsed:hover .nav-tooltip {
+      opacity: 1;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      margin: 10px 4px;
+      background-color: var(--color-border);
+      flex-shrink: 0;
+    }
+
+    .group-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 10px 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+      color: var(--color-text);
+    }
+
+    .group-link:hover {
+      background-color: var(--color-hover);
+    }
+
+    .group-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .group-text {
+      font-size: 14px;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .group-chevron {
+      flex-shrink: 0;
+      margin-left: auto;
+      color: var(--color-muted);
+    }
+
+    .theme-switch {
+      display: flex;
+      border-radius: 12px;
+      background-color: var(--color-search-bg);
+      overflow: hidden;
+      flex-shrink: 0;
+      margin: 12px 0;
+    }
+
+    .theme-button {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      background: transparent;
+      color: var(--color-muted);
+    }
+
+    .theme-button-active {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .user-profile:hover {
+      background-color: var(--color-hover);
+    }
+
+    .user-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--color-primary), #ff8c42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .user-info {
+      flex: 1;
+      white-space: nowrap;
+    }
+
+    .user-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .user-email {
+      font-size: 11px;
+      color: var(--color-muted);
+      margin-top: 1px;
+    }
+
+    .user-action-icon {
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <!-- Toggle Button -->
+    <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M8 2L4 6l4 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <div class="sidebar-inner">
+      
+      <!-- Header / Logo -->
+      <header class="sidebar-header">
+        <div class="sidebar-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="sidebar-brand-info">
+          <div class="sidebar-brand-name">PlanB</div>
+          <div class="sidebar-brand-subtitle">Creative Studio</div>
+        </div>
+      </header>
+
+      <!-- Search -->
+      <div class="search-wrapper">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="nav-icon" style="color: var(--color-muted);">
+          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+          <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" class="search-input" placeholder="Search..." />
+      </div>
+
+      <!-- Navigation Area -->
+      <div class="sidebar-scroll-area">
+        
+        <h3 class="sidebar-section-title">Menu</h3>
+        
+        <!-- Nav Items -->
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Home</span>
+        </a>
+
+        <a href="#" class="nav-link nav-link-active">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Task</span>
+          <span class="nav-badge">12</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Activity</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Users</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Notification</span>
+          <span class="nav-badge">14</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Bottom Menu Items -->
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </span>
+          <span class="nav-text">Setting</span>
+        </a>
+
+        <a href="#" class="nav-link">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-text">Support</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <h3 class="sidebar-section-title">Group</h3>
+
+        <!-- Group Items -->
+        <a href="#" class="group-link">
+          <div class="group-icon" style="background-color: rgba(155, 89, 182, 0.13);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" stroke="#9b59b6" stroke-width="2"/>
+              <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" stroke="#9b59b6" stroke-width="2"/>
+              <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" stroke="#9b59b6" stroke-width="2"/>
+              <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" stroke="#9b59b6" stroke-width="2"/>
+              <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" stroke="#9b59b6" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="group-text">Figma Files</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-chevron">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="#" class="group-link">
+          <div class="group-icon" style="background-color: rgba(52, 152, 219, 0.13);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="group-text">Downloads</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-chevron">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="#" class="group-link">
+          <div class="group-icon" style="background-color: rgba(231, 76, 60, 0.13);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#e74c3c" stroke-width="2"/>
+              <path d="M12 6v2M12 16v2M8 12h1l3-3 3 3h1" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="group-text">Costs</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-chevron">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="#" class="group-link">
+          <div class="group-icon" style="background-color: rgba(243, 156, 18, 0.13);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <polyline points="20 12 20 22 4 22 4 12" stroke="#f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="7" width="20" height="5" rx="1" stroke="#f39c12" stroke-width="2"/>
+              <line x1="12" y1="22" x2="12" y2="7" stroke="#f39c12" stroke-width="2"/>
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="#f39c12" stroke-width="2"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="#f39c12" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="group-text">Gifts</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-chevron">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+      </div>
+
+      <!-- Theme Switch -->
+      <div class="theme-switch">
+        <button class="theme-button">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Light
+        </button>
+        <button class="theme-button theme-button-active">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Dark
+        </button>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <div class="user-avatar">PB</div>
+        <div class="user-info">
+          <div class="user-name">planb.design</div>
+          <div class="user-email">planb@studio.io</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="user-action-icon">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+    </div>
+  </aside>
+
+</body>
+</html>

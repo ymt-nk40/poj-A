@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Extracted Section</title>
+		<link rel="stylesheet" href="./css/global.css">
+		<style>
+
+		.Ft-btn-slider {
+			width: 64px;
+			height: 64px;
+			border-radius: 20px 8px;
+			background: #020011;
+		}
+
+		.Ft-btn-slider:hover {
+			background-color: #ee4503;
+		}
+
+		.btnDisabled {
+			background: #454545;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+
+		.btnDisabled > div > div > svg > path {
+			fill: #7d7d7d;
+		}
+
+		.icon-45 > div {
+			display: flex;
+		}
+
+		.swiper {
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			overflow: hidden;
+			list-style: none;
+			padding: 0;
+			z-index: 1;
+			display: block;
+		}
+
+		.swiper-vertical > .swiper-wrapper {
+			flex-direction: column;
+		}
+
+		.swiper-wrapper {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			display: flex;
+			transition-property: transform;
+			transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+			box-sizing: content-box;
+		}
+
+		.swiper-android .swiper-slide,
+		.swiper-ios .swiper-slide,
+		.swiper-wrapper {
+			transform: translatez(0);
+		}
+
+		.swiper-horizontal {
+			touch-action: pan-y;
+		}
+
+		.swiper-slide {
+			flex-shrink: 0;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			transition-property: transform;
+			display: block;
+		}
+
+		.swiper-autoheight .swiper-slide {
+			height: auto;
+		}
+
+		.swiper-autoheight .swiper-wrapper {
+			align-items: flex-start;
+			transition-property: transform, height;
+		}
+
+		.swiper-backface-hidden .swiper-slide {
+			transform: translatez(0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+		}
+
+		.swiper-3d.swiper-css-mode .swiper-wrapper {
+			perspective: 1200px;
+		}
+
+		.swiper-3d .swiper-wrapper {
+			transform-style: preserve-3d;
+		}
+
+		.swiper-3d .swiper-slide {
+			transform-style: preserve-3d;
+		}
+
+		.swiper-css-mode > .swiper-wrapper {
+			overflow: auto;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
+
+		.swiper-css-mode > .swiper-wrapper::-webkit-scrollbar {
+			display: none;
+		}
+
+		.swiper-css-mode > .swiper-wrapper > .swiper-slide {
+			scroll-snap-align: start start;
+		}
+
+		.swiper-css-mode.swiper-horizontal > .swiper-wrapper {
+			scroll-snap-type: x mandatory;
+		}
+
+		.swiper-css-mode.swiper-vertical > .swiper-wrapper {
+			scroll-snap-type: y mandatory;
+		}
+
+		.swiper-css-mode.swiper-free-mode > .swiper-wrapper {
+			scroll-snap-type: none;
+		}
+
+		.swiper-css-mode.swiper-free-mode > .swiper-wrapper > .swiper-slide {
+			scroll-snap-align: none;
+		}
+
+		.swiper-css-mode.swiper-centered > .swiper-wrapper::before {
+			content: "";
+			flex-shrink: 0;
+			order: 9999;
+		}
+
+		.swiper-css-mode.swiper-centered > .swiper-wrapper > .swiper-slide {
+			scroll-snap-align: center center;
+			scroll-snap-stop: always;
+		}
+
+		.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {
+			margin-inline-start: var(--swiper-centered-offset-before);
+		}
+
+		.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper::before {
+			height: 100%;
+			min-height: 1px;
+			width: var(--swiper-centered-offset-after);
+		}
+
+		.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {
+			margin-block-start: var(--swiper-centered-offset-before);
+		}
+
+		.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper::before {
+			width: 100%;
+			min-width: 1px;
+			height: var(--swiper-centered-offset-after);
+		}
+
+		.swiper:not(.swiper-watch-progress) .swiper-lazy-preloader {
+			animation: swiper-preloader-spin 1s infinite linear;
+		}
+
+		.cardActive {
+			position: relative;
+			padding: 0 48px 32px;
+			background-color: #ee4503;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			border-radius: 8px;
+		}
+
+		.cardActive .question-1 {
+			color: #fff;
+			font-family: Whyte Inktrap;
+			font-size: 28px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 110%;
+			z-index: 2;
+			padding-right: 190px;
+		}
+
+		.cardActive .answer {
+			font-family: Chillax, serif;
+			color: #ffffffb3;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 120%;
+		}
+
+		.cardActive .type {
+			font-family: Chillax, serif;
+			color: #020011;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: normal;
+			position: absolute;
+			bottom: -35px;
+			left: 5%;
+		}
+
+		.cardSmall {
+			position: relative;
+			background-color: #ededed;
+			padding: 0 24px 16px;
+			border-radius: 0 0 8px 8px;
+		}
+
+		.cardSmall .question-1 {
+			line-height: 110%;
+		}
+
+		.cardSmallBg {
+			position: absolute;
+			top: -22px;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+		}
+
+		.cardSmallBg > div {
+			display: flex;
+		}
+
+		.cardSmallBg > div > svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		.cardSmallActive {
+			position: relative;
+			background-color: #ee4503;
+			padding: 0 24px 16px;
+			border-radius: 0 0 8px 8px;
+		}
+
+		.cardSmallActive .question-1 {
+			color: #fff;
+			line-height: 110%;
+		}
+
+		.block {
+			position: relative;
+			padding: 20px;
+		}
+
+		.blockIconTl {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.blockIconTr {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		.blockIconBr {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+
+		.blockIconBl {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		._cardBgTop_1pxn4_98 {
+			position: absolute;
+			top: -58px;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+		}
+
+		._cardBgTop_1pxn4_98 > div {
+			display: flex;
+		}
+
+		._cardBgTop_1pxn4_98 > div > svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		.cardBgBottom {
+			position: absolute;
+			bottom: -28px;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+		}
+
+		.cardBgBottom > div {
+			display: flex;
+		}
+
+		.cardBgBottom > div > svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		@media (max-width: 1280px) {
+			.cardActive {
+				position: relative;
+				padding: 0 24px 10px;
+				background-color: #ee4503;
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.cardActive .question-1 {
+				font-size: 20px;
+				padding-right: 0;
+			}
+
+			.cardActive .answer {
+				font-size: 16px;
+			}
+
+			.cardActive .block {
+				padding: 8px 20px;
+			}
+
+			.cardSmall {
+				height: 76px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0 16px;
+			}
+
+			.cardSmall .question-1 {
+				font-size: 18px;
+			}
+
+			.cardSmallBg {
+				top: -19px;
+			}
+
+			.cardSmallActive {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				background-color: #ee4503;
+				padding: 0 16px;
+				height: 76px;
+				border-radius: 0 0 8px 8px;
+			}
+
+			.cardSmallActive .question-1 {
+				font-size: 18px;
+			}
+
+			._cardBgTop_1pxn4_98 {
+				top: -55px;
+			}
+
+			.cardBgBottom {
+				bottom: -30px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.cardActive {
+				padding: 16px 24px 65px;
+				background-image: url(data:image/svg+xml,%3csvg%20width='358'%20height='372'%20viewBox='0%200%20358%20372'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M260.801%2010.8712C258.602%204.37316%20252.505%200%20245.645%200L16%200C7.16345%200%200%207.16345%200%2016V318.188C0%20327.025%207.16344%20334.188%2016%20334.188H66.3338C72.5112%20334.188%2078.1367%20337.744%2080.7867%20343.325L90.066%20362.864C92.716%20368.444%2098.3415%20372%20104.519%20372H342C350.837%20372%20358%20364.837%20358%20356V84C358%2075.1634%20350.837%2068%20342%2068H291.61C284.75%2068%20278.653%2063.6268%20276.454%2057.1288L260.801%2010.8712Z'%20fill='%23EE4503'/%3e%3c/svg%3e);
+				background-position: center;
+				background-color: transparent;
+				height: 372px;
+				justify-content: space-around;
+			}
+
+			.cardActive .question-1 {
+				padding-right: 90px;
+			}
+
+			.cardActive .answer {
+				font-size: 16px;
+			}
+
+			.cardActive .type {
+				bottom: 5px;
+			}
+
+			.cardSmallBg {
+				height: auto;
+				top: -21px;
+			}
+
+			.cardSmallBg > div > svg {
+				height: 23px;
+			}
+
+			._cardBgTop_1pxn4_98,
+			.cardBgBottom {
+				display: none;
+			}
+		}
+
+		.faq-section {
+			position: relative;
+			height: 100vh;
+			display: grid;
+			grid-template-columns: 1fr 1.7fr 1fr;
+		}
+
+		.faq-section .info {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 56px 64px;
+		}
+
+		.faq-section .info .text {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.faq-section .info .text .title {
+			color: #020011;
+			font-family: Whyte Inktrap, serif;
+			font-size: 32px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 120%;
+		}
+
+		.faq-section .info .text .description {
+			font-family: Chillax, serif;
+			color: #12120f;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 120%;
+			padding-right: 54px;
+		}
+
+		.faq-section .info .footer-navigation {
+			display: flex;
+			gap: 25px;
+		}
+
+		.faq-section .center {
+			padding: 0 28px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.faq-section .center ._fadeOut_k2l3q_46 {
+			opacity: 0;
+			transform: scale(.6) translatey(20px);
+			transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+		}
+
+		.faq-section .center .fadeIn {
+			opacity: 1;
+			transform: scale(1) translatey(0);
+			transition: opacity 0.5s cubic-bezier(.22, 1, .36, 1), transform 0.5s cubic-bezier(.22, 1, .36, 1);
+		}
+
+		.faq-section .list {
+			padding: 56px 64px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 39px;
+		}
+
+		.faq-section .list .card {
+			cursor: pointer;
+		}
+
+		.faq-section ._slider_k2l3q_65,
+		.faq-section .navigationMobile {
+			display: none;
+		}
+
+		@media (max-width: 1024px) {
+			.faq-section {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 56px 16px;
+				height: 100vh;
+			}
+
+			.faq-section .info {
+				padding: 0;
+				height: auto;
+				max-width: 420px;
+				margin: 0 auto;
+			}
+
+			.faq-section .info .text {
+				gap: 12px;
+			}
+
+			.faq-section .info .text .title {
+				font-size: 20px;
+				text-align: center;
+			}
+
+			.faq-section .info .text .description {
+				text-align: center;
+				padding: 0;
+			}
+
+			.faq-section .info .footer-navigation {
+				display: none;
+			}
+
+			.faq-section .center {
+				margin: 108px auto 0;
+				padding: 0;
+				max-width: 560px;
+			}
+
+			.faq-section .list {
+				display: none;
+			}
+
+			.faq-section ._slider_k2l3q_65 {
+				display: block;
+				margin-top: 65px;
+			}
+
+			.faq-section ._slider_k2l3q_65 ._swiper_k2l3q_112 .card {
+				max-width: 242px;
+				height: 100px;
+				display: flex;
+				align-items: end;
+			}
+
+			.faq-section .navigationMobile {
+				margin-top: 40px;
+				display: flex;
+				justify-content: center;
+				gap: 25px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.faq-section {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				padding: 56px 16px;
+			}
+
+			.faq-section .info {
+				padding: 0;
+			}
+
+			.faq-section .info .text {
+				gap: 12px;
+			}
+
+			.faq-section .info .text .title {
+				font-size: 20px;
+				text-align: center;
+			}
+
+			.faq-section .info .text .description {
+				text-align: center;
+			}
+
+			.faq-section .info .footer-navigation {
+				display: none;
+			}
+
+			.faq-section .center {
+				margin-top: 48px;
+				padding: 0;
+				max-width: 358px;
+			}
+
+			.faq-section .list {
+				display: none;
+			}
+
+			.faq-section ._slider_k2l3q_65 {
+				margin-top: 24px;
+			}
+
+			.faq-section .navigationMobile {
+				margin-top: 40px;
+				display: flex;
+				justify-content: center;
+				gap: 25px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<section id="faq" class="faq-section">
+			<div class="info">
+				<div class="text">
+					<h1 class="title">Frequently Asked Questions</h1>
+					<p class="description">Everything You Need to Know with
+						Answers to the Most Frequently
+						Asked Questions</p>
+				</div>
+				<div class="footer-navigation">
+					<button class="Ft-btn-hover Ft-btn-slider btnDisabled" disabled="" style="transform: rotate(180deg);">
+						<div class="icon-45">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.3795%202.7002L11.4395%203.1702C12.7095%208.3602%2016.2595%2011.0002%2021.9995%2011.0002V9.0002C17.1695%209.0002%2014.4295%207.0002%2013.3795%202.7002Z'%20fill='white'/%3e%3cpath%20d='M22%2011H2V13H22V11Z'%20fill='white'/%3e%3cpath%20d='M11.4395%2020.83L13.3795%2021.3C14.4295%2017%2017.1695%2015%2021.9995%2015V13C16.2595%2013%2012.7095%2015.63%2011.4395%2020.83Z'%20fill='white'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M13.3795 2.7002L11.4395 3.1702C12.7095 8.3602 16.2595 11.0002 21.9995 11.0002V9.0002C17.1695 9.0002 14.4295 7.0002 13.3795 2.7002Z" fill="white"></path>
+									<path d="M22 11H2V13H22V11Z" fill="white"></path>
+									<path d="M11.4395 20.83L13.3795 21.3C14.4295 17 17.1695 15 21.9995 15V13C16.2595 13 12.7095 15.63 11.4395 20.83Z" fill="white"></path>
+								</svg>
+							</div>
+						</div>
+					</button>
+					<button class="Ft-btn-hover Ft-btn-slider" style="transform: none;">
+						<div class="icon-45">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.3795%202.7002L11.4395%203.1702C12.7095%208.3602%2016.2595%2011.0002%2021.9995%2011.0002V9.0002C17.1695%209.0002%2014.4295%207.0002%2013.3795%202.7002Z'%20fill='white'/%3e%3cpath%20d='M22%2011H2V13H22V11Z'%20fill='white'/%3e%3cpath%20d='M11.4395%2020.83L13.3795%2021.3C14.4295%2017%2017.1695%2015%2021.9995%2015V13C16.2595%2013%2012.7095%2015.63%2011.4395%2020.83Z'%20fill='white'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M13.3795 2.7002L11.4395 3.1702C12.7095 8.3602 16.2595 11.0002 21.9995 11.0002V9.0002C17.1695 9.0002 14.4295 7.0002 13.3795 2.7002Z" fill="white"></path>
+									<path d="M22 11H2V13H22V11Z" fill="white"></path>
+									<path d="M11.4395 20.83L13.3795 21.3C14.4295 17 17.1695 15 21.9995 15V13C16.2595 13 12.7095 15.63 11.4395 20.83Z" fill="white"></path>
+								</svg>
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div class="center">
+				<div class="fadeIn">
+					<div class="cardActive">
+						<h3 class="question-1">What is the main focus of Plan B, and how does it stand out?</h3>
+						<div class="_cardBgTop_1pxn4_98">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="607" height="64" viewBox="0 0 607 64" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='607'%20height='64'%20viewBox='0%200%20607%2064'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M506.833%2011.7242C504.912%204.79587%20498.605%200%20491.415%200H16C7.16343%200%200%207.16344%200%2016V64H607V64C607%2059.5817%20603.418%2056%20599%2056H531.278C524.088%2056%20517.782%2051.2041%20515.86%2044.2758L506.833%2011.7242Z'%20fill='%23EE4503'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M506.833 11.7242C504.912 4.79587 498.605 0 491.415 0H16C7.16343 0 0 7.16344 0 16V64H607V64C607 59.5817 603.418 56 599 56H531.278C524.088 56 517.782 51.2041 515.86 44.2758L506.833 11.7242Z" fill="#EE4503"></path>
+								</svg>
+							</div>
+						</div>
+						<div class="cardBgBottom">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="607" height="35" viewBox="0 0 607 35" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='607'%20height='35'%20viewBox='0%200%20607%2035'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%200H607V19C607%2027.8366%20599.837%2035%20591%2035H149.274C142.084%2035%20135.777%2030.2041%20133.856%2023.2758L132.871%2019.7242C130.95%2012.7959%20124.643%207.99999%20117.453%207.99999L8%208C3.58172%208%200%204.41828%200%200V0Z'%20fill='%23EE4503'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M0 0H607V19C607 27.8366 599.837 35 591 35H149.274C142.084 35 135.777 30.2041 133.856 23.2758L132.871 19.7242C130.95 12.7959 124.643 7.99999 117.453 7.99999L8 8C3.58172 8 0 4.41828 0 0V0Z" fill="#EE4503"></path>
+								</svg>
+							</div>
+						</div>
+						<div class="block">
+							<p class="answer">Plan B is a blockchain platform
+								built with Bitcoin in mind,
+								prioritizing security and trust.
+								It also features EVM (Ethereum
+								Virtual Machine) compatibility,
+								enabling seamless deployment
+								of smart contracts. This unique
+								combination bridges Bitcoin’s
+								reliability with Ethereum's
+								versatility.</p>
+							<div class="blockIconTl">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M10.5%201L5%201C2.79086%201%201%202.79086%201%205L1%2010'%20stroke='white'%20stroke-width='2'%20stroke-linejoin='bevel'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+										<path d="M10.5 1L5 1C2.79086 1 1 2.79086 1 5L1 10" stroke="white" stroke-width="2" stroke-linejoin="bevel"></path>
+									</svg>
+								</div>
+							</div>
+							<div class="blockIconTr">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='10'%20height='11'%20viewBox='0%200%2010%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9%2010.5L9%205C9%202.79086%207.20914%201%205%201L0%201'%20stroke='white'%20stroke-width='2'%20stroke-linejoin='bevel'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+										<path d="M9 10.5L9 5C9 2.79086 7.20914 1 5 1L0 1" stroke="white" stroke-width="2" stroke-linejoin="bevel"></path>
+									</svg>
+								</div>
+							</div>
+							<div class="blockIconBr">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.5%209L6%209C8.20914%209%2010%207.20914%2010%205L10%200'%20stroke='white'%20stroke-width='2'%20stroke-linejoin='bevel'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+										<path d="M0.5 9L6 9C8.20914 9 10 7.20914 10 5L10 0" stroke="white" stroke-width="2" stroke-linejoin="bevel"></path>
+									</svg>
+								</div>
+							</div>
+							<div class="blockIconBl">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='10'%20height='11'%20viewBox='0%200%2010%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M1%200.5L1%206C1%208.20914%202.79086%2010%205%2010L10%2010'%20stroke='white'%20stroke-width='2'%20stroke-linejoin='bevel'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+										<path d="M1 0.5L1 6C1 8.20914 2.79086 10 5 10L10 10" stroke="white" stroke-width="2" stroke-linejoin="bevel"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+						<h5 class="type">FAQ</h5>
+					</div>
+				</div>
+			</div>
+			<div class="list">
+				<div class="card">
+					<div class="cardSmallActive">
+						<h3 class="question-1">What is the main focus of Plan B, and how does it stand out?</h3>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+								</svg>
+							</div>
+						</div>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EE4503'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EE4503"></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="cardSmall">
+						<h3 class="question-1">How does Plan B support developers?</h3>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="cardSmall">
+						<h3 class="question-1">Is Plan B open source?</h3>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="cardSmall">
+						<h3 class="question-1">How does Plan B bridge Bitcoin with multi-chain access?</h3>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="cardSmall">
+						<h3 class="question-1">Who can benefit from using Plan B?</h3>
+						<div class="cardSmallBg">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="_slider_k2l3q_65">
+				<div class="swiper swiper-initialized swiper-horizontal _swiper_k2l3q_112">
+					<div class="swiper-wrapper" style="transition-duration: 0ms; transition-delay: 0ms;">
+						<div class="swiper-slide card">
+							<div class="cardSmallActive">
+								<h3 class="question-1">What is the main focus of Plan B, and how does it stand out?</h3>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+										</svg>
+									</div>
+								</div>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EE4503'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EE4503"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide card">
+							<div class="cardSmall">
+								<h3 class="question-1">How does Plan B support developers?</h3>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide card">
+							<div class="cardSmall">
+								<h3 class="question-1">Is Plan B open source?</h3>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide card">
+							<div class="cardSmall">
+								<h3 class="question-1">How does Plan B bridge Bitcoin with multi-chain access?</h3>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide card">
+							<div class="cardSmall">
+								<h3 class="question-1">Who can benefit from using Plan B?</h3>
+								<div class="cardSmallBg">
+									<div>
+										<svg xmlns="http://www.w3.org/2000/svg" width="260" height="23" viewBox="0 0 260 23" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='260'%20height='23'%20viewBox='0%200%20260%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M232.84%205.83924C231.871%202.38641%20228.723%200%20225.137%200H8C3.58172%200%200%203.58172%200%208V23H260C260%2021.3431%20258.657%2020%20257%2020H242.877C239.29%2020%20236.142%2017.6136%20235.174%2014.1608L232.84%205.83924Z'%20fill='%23EDEDED'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+											<path d="M232.84 5.83924C231.871 2.38641 228.723 0 225.137 0H8C3.58172 0 0 3.58172 0 8V23H260C260 21.3431 258.657 20 257 20H242.877C239.29 20 236.142 17.6136 235.174 14.1608L232.84 5.83924Z" fill="#EDEDED"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="navigationMobile">
+					<button class="Ft-btn-hover Ft-btn-slider btnDisabled" disabled="" style="transform: rotate(180deg);">
+						<div class="icon-45">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.3795%202.7002L11.4395%203.1702C12.7095%208.3602%2016.2595%2011.0002%2021.9995%2011.0002V9.0002C17.1695%209.0002%2014.4295%207.0002%2013.3795%202.7002Z'%20fill='white'/%3e%3cpath%20d='M22%2011H2V13H22V11Z'%20fill='white'/%3e%3cpath%20d='M11.4395%2020.83L13.3795%2021.3C14.4295%2017%2017.1695%2015%2021.9995%2015V13C16.2595%2013%2012.7095%2015.63%2011.4395%2020.83Z'%20fill='white'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M13.3795 2.7002L11.4395 3.1702C12.7095 8.3602 16.2595 11.0002 21.9995 11.0002V9.0002C17.1695 9.0002 14.4295 7.0002 13.3795 2.7002Z" fill="white"></path>
+									<path d="M22 11H2V13H22V11Z" fill="white"></path>
+									<path d="M11.4395 20.83L13.3795 21.3C14.4295 17 17.1695 15 21.9995 15V13C16.2595 13 12.7095 15.63 11.4395 20.83Z" fill="white"></path>
+								</svg>
+							</div>
+						</div>
+					</button>
+					<button class="Ft-btn-hover Ft-btn-slider" style="transform: none;">
+						<div class="icon-45">
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.3795%202.7002L11.4395%203.1702C12.7095%208.3602%2016.2595%2011.0002%2021.9995%2011.0002V9.0002C17.1695%209.0002%2014.4295%207.0002%2013.3795%202.7002Z'%20fill='white'/%3e%3cpath%20d='M22%2011H2V13H22V11Z'%20fill='white'/%3e%3cpath%20d='M11.4395%2020.83L13.3795%2021.3C14.4295%2017%2017.1695%2015%2021.9995%2015V13C16.2595%2013%2012.7095%2015.63%2011.4395%2020.83Z'%20fill='white'/%3e%3c/svg%3e" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+									<path d="M13.3795 2.7002L11.4395 3.1702C12.7095 8.3602 16.2595 11.0002 21.9995 11.0002V9.0002C17.1695 9.0002 14.4295 7.0002 13.3795 2.7002Z" fill="white"></path>
+									<path d="M22 11H2V13H22V11Z" fill="white"></path>
+									<path d="M11.4395 20.83L13.3795 21.3C14.4295 17 17.1695 15 21.9995 15V13C16.2595 13 12.7095 15.63 11.4395 20.83Z" fill="white"></path>
+								</svg>
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+		</section>
+		<section class="faq" id="faq">
+			<div class="faq__shell">
+				<header class="faq__header">
+					<div class="faq__intro">
+						<p class="faq__eyebrow">FAQ</p>
+						<h2 class="faq__title">Frequently Asked Questions</h2>
+						<p class="faq__summary">
+							Everything you need to know, with clear answers to the most common questions.
+						</p>
+					</div>
+					<div class="faq__controls" aria-label="FAQ navigation">
+						<button class="faq__nav faq__nav--prev" type="button" aria-label="Previous question" disabled>
+							<span class="faq__nav-icon">←</span>
+						</button>
+						<button class="faq__nav faq__nav--next" type="button" aria-label="Next question">
+							<span class="faq__nav-icon">→</span>
+						</button>
+					</div>
+				</header>
+	</body>
+</html>

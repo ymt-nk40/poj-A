@@ -1,0 +1,59 @@
+<section class="faq" id="faq">
+  <div class="faq__shell">
+    <header class="faq__header">
+      <div class="faq__intro">
+        <p class="faq__eyebrow">FAQ</p>
+        <h2 class="faq__title">Frequently Asked Questions</h2>
+        <p class="faq__summary">
+          Everything you need to know, with clear answers to the most common questions.
+        </p>
+      </div>
+
+      <div class="faq__controls" aria-label="FAQ navigation">
+        <button class="faq__nav faq__nav--prev" type="button" aria-label="Previous question" disabled>
+          <span class="faq__nav-icon">←</span>
+        </button>
+        <button class="faq__nav faq__nav--next" type="button" aria-label="Next question">
+          <span class="faq__nav-icon">→</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="faq__layout">
+      <article class="faq__feature">
+        <span class="faq__feature-tag">FAQ</span>
+        <h3 class="faq__feature-question">
+          What is the main focus of Plan B, and how does it stand out?
+        </h3>
+        <p class="faq__feature-answer">
+          Plan B is a blockchain platform built with Bitcoin in mind, prioritizing
+          security and trust. It also features EVM compatibility, enabling seamless
+          deployment of smart contracts. This combines Bitcoin’s reliability with
+          Ethereum’s flexibility.
+        </p>
+      </article>
+
+      <div class="faq__list" role="tablist" aria-label="FAQ questions">
+        <button class="faq__item faq__item--active" type="button" role="tab" aria-selected="true">
+          <span class="faq__item-text">What is the main focus of Plan B, and how does it stand out?</span>
+        </button>
+
+        <button class="faq__item" type="button" role="tab" aria-selected="false">
+          <span class="faq__item-text">How does Plan B support developers?</span>
+        </button>
+
+        <button class="faq__item" type="button" role="tab" aria-selected="false">
+          <span class="faq__item-text">Is Plan B open source?</span>
+        </button>
+
+        <button class="faq__item" type="button" role="tab" aria-selected="false">
+          <span class="faq__item-text">How does Plan B bridge Bitcoin with multi-chain access?</span>
+        </button>
+
+        <button class="faq__item" type="button" role="tab" aria-selected="false">
+          <span class="faq__item-text">Who can benefit from using Plan B?</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

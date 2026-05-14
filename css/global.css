@@ -1,0 +1,932 @@
+
+      @font-face {
+  font-family: Assistant;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//elevaremarket.com/cdn/fonts/assistant/assistant_n4.9120912a469cad1cc292572851508ca49d12e768.woff2") format("woff2"),
+       url("//elevaremarket.com/cdn/fonts/assistant/assistant_n4.6e9875ce64e0fefcd3f4446b7ec9036b3ddd2985.woff") format("woff");
+}
+
+      @font-face {
+  font-family: Assistant;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//elevaremarket.com/cdn/fonts/assistant/assistant_n7.bf44452348ec8b8efa3aa3068825305886b1c83c.woff2") format("woff2"),
+       url("//elevaremarket.com/cdn/fonts/assistant/assistant_n7.0c887fee83f6b3bda822f1150b912c72da0f7b64.woff") format("woff");
+}
+
+      
+      
+      @font-face {
+  font-family: Assistant;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//elevaremarket.com/cdn/fonts/assistant/assistant_n4.9120912a469cad1cc292572851508ca49d12e768.woff2") format("woff2"),
+       url("//elevaremarket.com/cdn/fonts/assistant/assistant_n4.6e9875ce64e0fefcd3f4446b7ec9036b3ddd2985.woff") format("woff");
+}
+
+
+      
+        @font-face {
+          font-family: 'DMSerifDisplay';
+          src:  url('//elevaremarket.com/cdn/shop/t/57/assets/DMSerifDisplay-Regular.woff2?v=79641119759339120091777547325') format('woff2'),
+                url('//elevaremarket.com/cdn/shop/t/57/assets/DMSerifDisplay-Regular.woff?v=40963202214579431741777547324') format('woff');
+          font-display: swap;
+        }
+      
+
+       
+        @font-face {
+        font-family: 'LibreFranklin';
+          src: url('//elevaremarket.com/cdn/shop/t/57/assets/LibreFranklin-Regular.woff2?v=77767865120764180711777547325') format('woff2'),
+              url('//elevaremarket.com/cdn/shop/t/57/assets/LibreFranklin-Regular.woff?v=94924854473100708581777547325') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+        font-family: 'LibreFranklin';
+          src: url('//elevaremarket.com/cdn/shop/t/57/assets/LibreFranklin-SemiBold.woff2?v=96907589929018336331777547322') format('woff2'),
+              url('//elevaremarket.com/cdn/shop/t/57/assets/LibreFranklin-SemiBold.woff?v=42552450069068128541777547322') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+      
+
+      @font-face {
+        font-family: 'Industry';
+        src:  url('//elevaremarket.com/cdn/shop/t/57/assets/industry-black.otf?v=133883190758908821391777547323') format('opentype');
+        font-display: swap;
+      }
+
+      
+        :root,
+        .color-scheme-1 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: #ffffff;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-2 {
+          --color-background: 237,238,240;
+        
+          --gradient-background: #edeef0;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 167,172,182;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 243,243,243;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 237,238,240;
+        --color-secondary-button-text: 18,18,18  ;
+        --color-secondary-button-background: 0,0,0;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 255,255,255;
+        --color-secondary-button-text-hover: 0,0,0;
+        --color-link: 18,18,18;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 237,238,240;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(237 238 240);
+      }
+      
+        
+        .color-scheme-3 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: linear-gradient(0deg, rgba(250, 245, 235, 1), rgba(255, 255, 255, 1) 98%, rgba(250, 248, 236, 0) 100%);
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 255,255,255;
+        --color-button-text-hover: 197,147,137;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 0,0,0;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 255,255,255;
+        --color-secondary-button-text-hover: 0,0,0;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-4 {
+          --color-background: 107,113,75;
+        
+          --gradient-background: #6b714b;
+        
+
+        
+
+        --color-foreground: 255,255,255;
+        --color-background-contrast: 34,36,24;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 107,113,75;
+        --color-secondary-button-text: 255,255,255  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 255,255,255;
+        --color-secondary-button-text-hover: 114,106,99;
+        --color-link: 255,255,255;
+        --color-badge-foreground: 255,255,255;
+        --color-badge-background: 107,113,75;
+        --color-badge-border: 255,255,255;
+        --payment-terms-background-color: rgb(107 113 75);
+      }
+      
+        
+        .color-scheme-5 {
+          --color-background: 250,245,235;
+        
+          --gradient-background: #faf5eb;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 225,194,133;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 250,245,235;
+        --color-secondary-button-text: 255,255,255  ;
+        --color-secondary-button-background: 0,0,0;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 255,255,255;
+        --color-secondary-button-text-hover: 0,0,0;
+        --color-link: 255,255,255;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 250,245,235;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(250 245 235);
+      }
+      
+        
+        .color-scheme-1ccb9280-175b-43e4-bd98-3f3d13c4e24f {
+          --color-background: 250,245,235;
+        
+          --gradient-background: #faf5eb;
+        
+
+        
+
+        --color-foreground: 255,255,255;
+        --color-background-contrast: 225,194,133;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 250,245,235;
+        --color-secondary-button-text: 255,255,255  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 255,255,255;
+        --color-secondary-button-text-hover: 114,106,99;
+        --color-link: 255,255,255;
+        --color-badge-foreground: 255,255,255;
+        --color-badge-background: 250,245,235;
+        --color-badge-border: 255,255,255;
+        --payment-terms-background-color: rgb(250 245 235);
+      }
+      
+        
+        .color-scheme-d1887e16-0f96-4062-9135-5728f31da163 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: linear-gradient(180deg, rgba(0, 0, 0, 0.43), rgba(238, 236, 233, 1) 87%);
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-e6006301-4b81-475f-a604-3d8977ac81b5 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: linear-gradient(180deg, rgba(250, 245, 235, 1), rgba(255, 255, 255, 1));
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-0199f8d0-b22e-481a-b649-35db4bc7804c {
+          --color-background: 0,0,0;
+        
+          --gradient-background: rgba(0,0,0,0);
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 128,128,128;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 0,0,0;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 0,0,0;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(0 0 0);
+      }
+      
+        
+        .color-scheme-b184516a-6e14-4dd1-aee2-891418e4432d {
+          --color-background: 192,15,12;
+        
+          --gradient-background: #c00f0c;
+        
+
+        
+
+        --color-foreground: 255,255,255;
+        --color-background-contrast: 72,6,4;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 192,15,12;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 255,255,255;
+        --color-badge-background: 192,15,12;
+        --color-badge-border: 255,255,255;
+        --payment-terms-background-color: rgb(192 15 12);
+      }
+      
+        
+        .color-scheme-a7644b12-ff04-4601-841c-bbe1e3c4d3f7 {
+          --color-background: 114,106,99;
+        
+          --gradient-background: #726a63;
+        
+
+        
+
+        --color-foreground: 255,255,255;
+        --color-background-contrast: 46,43,40;
+        --color-shadow: ,,;
+        --color-button: 238,236,233;
+        --color-button-text: 114,106,99;
+        --color-button-hover: 114,106,99;
+        --color-button-text-hover: 238,236,233;
+        --color-secondary-button: 114,106,99;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 255,255,255;
+        --color-badge-background: 114,106,99;
+        --color-badge-border: 255,255,255;
+        --payment-terms-background-color: rgb(114 106 99);
+      }
+      
+        
+        .color-scheme-a694698d-f9d7-4bba-a52d-3f031e115663 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: #ffffff;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-2fddadb3-951f-4b65-9bd5-09a98d34b94c {
+          --color-background: 255,255,255;
+        
+          --gradient-background: #ffffff;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 238,236,233;
+        --color-button-text: 114,106,99;
+        --color-button-hover: 114,106,99;
+        --color-button-text-hover: 238,236,233;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-ddfebff8-dd94-4aa6-83cf-f6c4d50dc1f3 {
+          --color-background: 255,255,255;
+        
+          --gradient-background: #ffffff;
+        
+
+        
+
+        --color-foreground: 255,255,255;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 255,255,255;
+        --color-button-text: 114,106,99;
+        --color-button-hover: 114,106,99;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 255,255,255;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 255,255,255;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-1e069831-d069-4175-afd7-b34ed9db5bfa {
+          --color-background: 255,255,255;
+        
+          --gradient-background: #ffffff;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-9af4cf18-c91f-4ce3-a64f-001add5a892c {
+          --color-background: 255,255,255;
+        
+          --gradient-background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(127, 72, 176, 0) 50%, rgba(238, 236, 233, 1) 100%);
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+        
+        .color-scheme-fe7dda91-2df1-4ff1-9b6a-db62b96bed50 {
+          --color-background: 248,247,246;
+        
+          --gradient-background: #f8f7f6;
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 192,183,174;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 248,247,246;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 248,247,246;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(248 247 246);
+      }
+      
+        
+        .color-scheme-e76f0b5a-a4b8-4869-98de-3201da13964f {
+          --color-background: 255,255,255;
+        
+          --gradient-background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(250, 245, 235, 1));
+        
+
+        
+
+        --color-foreground: 114,106,99;
+        --color-background-contrast: 191,191,191;
+        --color-shadow: ,,;
+        --color-button: 183,120,107;
+        --color-button-text: 255,255,255;
+        --color-button-hover: 197,147,137;
+        --color-button-text-hover: 255,255,255;
+        --color-secondary-button: 255,255,255;
+        --color-secondary-button-text: 114,106,99  ;
+        --color-secondary-button-background: 255,255,255;
+        --color-secondary-button-border: ,,;
+        --color-secondary-button-hover: 114,106,99;
+        --color-secondary-button-text-hover: 255,255,255;
+        --color-link: 114,106,99;
+        --color-badge-foreground: 114,106,99;
+        --color-badge-background: 255,255,255;
+        --color-badge-border: 114,106,99;
+        --payment-terms-background-color: rgb(255 255 255);
+      }
+      
+
+      body, .color-scheme-1, .color-scheme-2, .color-scheme-3, .color-scheme-4, .color-scheme-5, .color-scheme-1ccb9280-175b-43e4-bd98-3f3d13c4e24f, .color-scheme-d1887e16-0f96-4062-9135-5728f31da163, .color-scheme-e6006301-4b81-475f-a604-3d8977ac81b5, .color-scheme-0199f8d0-b22e-481a-b649-35db4bc7804c, .color-scheme-b184516a-6e14-4dd1-aee2-891418e4432d, .color-scheme-a7644b12-ff04-4601-841c-bbe1e3c4d3f7, .color-scheme-a694698d-f9d7-4bba-a52d-3f031e115663, .color-scheme-2fddadb3-951f-4b65-9bd5-09a98d34b94c, .color-scheme-ddfebff8-dd94-4aa6-83cf-f6c4d50dc1f3, .color-scheme-1e069831-d069-4175-afd7-b34ed9db5bfa, .color-scheme-9af4cf18-c91f-4ce3-a64f-001add5a892c, .color-scheme-fe7dda91-2df1-4ff1-9b6a-db62b96bed50, .color-scheme-e76f0b5a-a4b8-4869-98de-3201da13964f {
+        color: rgba(var(--color-foreground));
+        background-color: rgb(var(--color-background)); 
+      }
+
+      :root {
+        
+          --font-body-family: "LibreFranklin";
+          --font-body-style: normal;
+          --font-body-weight: 400;
+          --font-body-weight-bold:600;
+        
+
+        
+          --font-heading-family: 'DMSerifDisplay';
+          --font-heading-style: normal;
+          --font-heading-weight: 400;
+        
+
+        --font-body-scale: 1.0;
+        --font-heading-scale: 1.0;
+
+        --media-padding: px;
+        --media-border-opacity: 0.05;
+        --media-border-width: 1px;
+        --media-radius: 16px;
+        --media-shadow-opacity: 0.0;
+        --media-shadow-horizontal-offset: 0px;
+        --media-shadow-vertical-offset: 4px;
+        --media-shadow-blur-radius: 5px;
+        --media-shadow-visible: 0;
+
+        --page-width: 160rem;
+        --page-width-margin: 0rem;
+
+        --product-card-image-padding: 0.0rem;
+        --product-card-corner-radius: 2.0rem;
+        --product-card-text-alignment: left;
+        --product-card-border-width: 0.1rem;
+        --product-card-border-opacity: 0.1;
+        --product-card-shadow-opacity: 0.0;
+        --product-card-shadow-visible: 0;
+        --product-card-shadow-horizontal-offset: 0.0rem;
+        --product-card-shadow-vertical-offset: 0.4rem;
+        --product-card-shadow-blur-radius: 0.5rem;
+
+        --collection-card-image-padding: 0.0rem;
+        --collection-card-corner-radius: 0.0rem;
+        --collection-card-text-alignment: left;
+        --collection-card-border-width: 0.1rem;
+        --collection-card-border-opacity: 0.1;
+        --collection-card-shadow-opacity: 0.0;
+        --collection-card-shadow-visible: 0;
+        --collection-card-shadow-horizontal-offset: 0.0rem;
+        --collection-card-shadow-vertical-offset: 0.4rem;
+        --collection-card-shadow-blur-radius: 0.5rem;
+
+        --blog-card-image-padding: 0.0rem;
+        --blog-card-corner-radius: 0.0rem;
+        --blog-card-text-alignment: left;
+        --blog-card-border-width: 0.1rem;
+        --blog-card-border-opacity: 0.1;
+        --blog-card-shadow-opacity: 0.0;
+        --blog-card-shadow-visible: 0;
+        --blog-card-shadow-horizontal-offset: 0.0rem;
+        --blog-card-shadow-vertical-offset: 0.4rem;
+        --blog-card-shadow-blur-radius: 0.5rem;
+
+        --badge-corner-radius: 4.0rem;
+
+        --popup-border-width: 1px;
+        --popup-border-opacity: 0.1;
+        --popup-corner-radius: 8px;
+        --popup-shadow-opacity: 0.05;
+        --popup-shadow-horizontal-offset: 0px;
+        --popup-shadow-vertical-offset: 4px;
+        --popup-shadow-blur-radius: 5px;
+
+        --drawer-border-width: 1px;
+        --drawer-border-opacity: 0.1;
+        --drawer-shadow-opacity: 0.0;
+        --drawer-shadow-horizontal-offset: 0px;
+        --drawer-shadow-vertical-offset: 4px;
+        --drawer-shadow-blur-radius: 5px;
+
+        --spacing-sections-desktop: 0px;
+        --spacing-sections-mobile: 0px;
+
+        --grid-desktop-vertical-spacing: 8px;
+        --grid-desktop-horizontal-spacing: 20px;
+        --grid-mobile-vertical-spacing: 4px;
+        --grid-mobile-horizontal-spacing: 10px;
+
+        --text-boxes-border-opacity: 0.1;
+        --text-boxes-border-width: 1px;
+        --text-boxes-radius: 0px;
+        --text-boxes-shadow-opacity: 0.0;
+        --text-boxes-shadow-visible: 0;
+        --text-boxes-shadow-horizontal-offset: 0px;
+        --text-boxes-shadow-vertical-offset: 4px;
+        --text-boxes-shadow-blur-radius: 5px;
+
+        --buttons-radius: 40px;
+        --buttons-radius-outset: 41px;
+        --buttons-border-width: 1px;
+        --buttons-border-opacity: 1.0;
+        --buttons-shadow-opacity: 0.0;
+        --buttons-shadow-visible: 0;
+        --buttons-shadow-horizontal-offset: 0px;
+        --buttons-shadow-vertical-offset: 4px;
+        --buttons-shadow-blur-radius: 5px;
+        --buttons-border-offset: 0.3px;
+
+        --inputs-radius: 8px;
+        --inputs-border-width: 1px;
+        --inputs-border-opacity: 0.55;
+        --inputs-shadow-opacity: 0.0;
+        --inputs-shadow-horizontal-offset: 0px;
+        --inputs-margin-offset: 0px;
+        --inputs-shadow-vertical-offset: 4px;
+        --inputs-shadow-blur-radius: 5px;
+        --inputs-radius-outset: 9px;
+
+        --variant-pills-radius: 8px;
+        --variant-pills-border-width: 2px;
+        --variant-pills-border-opacity: 1.0;
+        --variant-pills-shadow-opacity: 0.0;
+        --variant-pills-shadow-horizontal-offset: 0px;
+        --variant-pills-shadow-vertical-offset: 4px;
+        --variant-pills-shadow-blur-radius: 5px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      html {
+        box-sizing: border-box;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        height: 100%;
+      }
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.6rem;
+        letter-spacing: 0;
+        line-height: 150% ;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+
+      [lang="ar"] body{
+        font-size: 1.8rem;
+        line-height:133.333%;
+      }
+      
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Extralight.woff2") format("woff2"), url("/fonts/Chillax-Extralight.woff") format("woff"), url("/fonts/Chillax-Extralight.ttf") format("truetype");
+	font-weight: 200;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Light.woff2") format("woff2"), url("/fonts/Chillax-Light.woff") format("woff"), url("/fonts/Chillax-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Regular.woff2") format("woff2"), url("/fonts/Chillax-Regular.woff") format("woff"), url("/fonts/Chillax-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Medium.woff2") format("woff2"), url("/fonts/Chillax-Medium.woff") format("woff"), url("/fonts/Chillax-Medium.ttf") format("truetype");
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Semibold.woff2") format("woff2"), url("/fonts/Chillax-Semibold.woff") format("woff"), url("/fonts/Chillax-Semibold.ttf") format("truetype");
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax;
+	src: url("/fonts/Chillax-Bold.woff2") format("woff2"), url("/fonts/Chillax-Bold.woff") format("woff"), url("/fonts/Chillax-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Chillax-Variable;
+	src: url("/fonts/Chillax-Variable.woff2") format("woff2"), url("/fonts/Chillax-Variable.woff") format("woff"), url("/fonts/Chillax-Variable.ttf") format("truetype");
+	font-weight: 200 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Thin.woff2") format("woff2"), url("/fonts/WhyteInktrap-Thin.woff") format("woff");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Light.woff2") format("woff2"), url("/fonts/WhyteInktrap-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Regular.woff2") format("woff2"), url("/fonts/WhyteInktrap-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Medium.woff2") format("woff2"), url("/fonts/WhyteInktrap-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Bold.woff2") format("woff2"), url("/fonts/WhyteInktrap-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Whyte Inktrap;
+	src: url("/fonts/WhyteInktrap-Black.woff2") format("woff2"), url("/fonts/WhyteInktrap-Black.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: Chillax-Regular, sans-serif;
+	overflow-x: hidden;
+	height: 100%;
+}
+
+body {
+	background-color: #f3f3f3;
+	height: 100%;
+}
+
+#root {
+	height: 100%;
+}
+
+.container {
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+h1 {
+	color: #020011;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: Whyte Inktrap, serif;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 120%;
+}
+
+h3 {
+	color: #020011;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: Whyte Inktrap, serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 120%;
+}
+
+.titleS {
+	font-family: Chillax, serif;
+	color: #282828;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+	letter-spacing: -0.286px;
+}
+
+@media (max-width: 1024px) {
+	.container {
+		padding: 0 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 0;
+	}
+}
+
+#insights-updates-section .insights-updates-slide:not(.swiper-slide-active) {
+	transform: scale(.5) translatey(330px) !important;
+}
+
+@media (max-width: 768px) {
+	#insights-updates-section .insights-updates-slide:not(.swiper-slide-active) {
+		transform: none;
+	}
+}

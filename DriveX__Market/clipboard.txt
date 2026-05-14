@@ -1,0 +1,29 @@
+<div class="slideshow__media banner__media media sm:!tw-h-full">
+
+
+
+
+  <picture>
+    <source media="(min-width: 768px)" srcset="
+        
+          //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=1920 1920w,
+        
+        
+          //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=1600 1600w,
+        
+        
+          //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=1280 1280w,
+        
+        
+          //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=1024 1024w,
+        
+        
+          //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=768 768w
+        
+      " sizes="100vw">
+    
+      <img src="//elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=768" alt="" srcset="//elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=352 352w, //elevaremarket.com/cdn/shop/files/Homepage_Top_Banner_Slide_2.webp?v=1771834784&amp;width=768 768w" width="768" height="192" loading="eager" class="tw-w-full tw-h-full tw-object-cover" fetchpriority="high" sizes="100vw">
+    
+  </picture>
+
+</div>
