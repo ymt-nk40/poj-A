@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+  /assets/fonts/Libre-Franklin/LibreFranklin-SemiBold.woff
     :root {
       --olive: #6b714b;
       --taupe: #726a63;
@@ -17,23 +18,43 @@
       --line-strong: rgba(114, 106, 99, 0.18);
       --serif: "DM Serif Display", Georgia, serif;
       --sans: "Libre Franklin", Inter, "Helvetica Neue", system-ui, sans-serif;
+      --font-body-family: "LibreFranklin";
+	  --font-body-scale: 1.0;
     }
 
-    * { box-sizing: border-box; }
+         *,
+		*::before,
+		*::after {
+			box-sizing: inherit;
+		}
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background: #ffffff;
-      color: var(--taupe);
-      font-family: var(--sans);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
+		html {
+			box-sizing: border-box;
+			font-size: calc(var(--font-body-scale) * 62.5%);
+			height: 100%;
+		}
 
-    body { width: 100%; }
+		body {
+			display: grid;
+			grid-template-rows: auto auto 1fr auto;
+			grid-template-columns: 100%;
+			min-height: 100%;
+			margin: 0;
+			font-size: 1.6rem;
+			letter-spacing: 0;
+			line-height: 150%;
+			font-family: var(--font-body-family);
+			font-style: var(--font-body-style);
+			font-weight: var(--font-body-weight);
+		}
+
+		[lang="ar"] body {
+			font-size: 1.8rem;
+			line-height: 133.333%;
+		}
+
+
+
 
     button, input { font: inherit; }
 
@@ -335,7 +356,6 @@
       .logo-sub { font-size: 9px; letter-spacing: .24em; }
     }
 
-/* ပုံမှန် မျက်နှာပြင် (Desktop/Tablet) တွေအတွက် */
 .hero {
   position: relative;
   width: 100%;
@@ -357,7 +377,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      animation: hero-kenburns 18s ease-out forwards;
+      /* animation: hero-kenburns 18s ease-out forwards;*/
       transform-origin: 65% 50%;
     }
 
